@@ -33,7 +33,7 @@ const items = ["about us", "support", "press", "api", "jobs", "privacy", "terms"
 export default () => (
 	<Footer>
 		<List>
-			{items.map(item => <ListItem><Link href="#">{item}</Link></ListItem>)}
+			{items.map((item, index) => <ListItem key={ index }><Link href="#">{item}</Link></ListItem>)}
 			<Copyright>Instaclone {new Date().getFullYear()} &copy;</Copyright>
 		</List>
 	</Footer>
