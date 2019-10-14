@@ -57,6 +57,7 @@ export default () => {
 				data.seeFeed &&
 				data.seeFeed.map(post => (
 					<Post
+					key={post.id}
 					id={post.id}
 					user={post.user}
 					files={post.files}

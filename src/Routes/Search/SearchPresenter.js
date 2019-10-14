@@ -4,6 +4,7 @@ import FatText from "../../Components/FatText";
 import PropTypes from "prop-types";
 import Loader from "../../Components/Loader";
 import UserCard from "../../Components/UserCard";
+import SquarePost from "../../Components/SquearePost";
 
 const Wrapper = styled.div`
 	height: 50vh;
@@ -12,7 +13,7 @@ const Section = styled.div`
 	margin-bottom: 50px;
 	display: grid;
 	grid-gap: 25px;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(4, 160px);
 	grid-template-rows: 160px;
 	grid-auto-rows: 160px;
 `;
@@ -43,7 +44,8 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
                 username={user.username}
                 isFollowing={user.isFollowing}
                 url={user.avatar}
-                isSelf={user.isSelf}
+								isSelf={user.isSelf}
+								id={user.id}
               />
             ))
           )}
@@ -52,7 +54,14 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
           {data.searchPost.length === 0 ? (
             <FatText text="No Posts Found" />
           ) : (
-            data.searchPost.map(post => null)
+            data.searchPost.map(post => (
+							<SquarePost
+								key={post.id}
+								file={post.files[0]}
+								likeCount={post.likeCount}
+								commentCount={post.commentCount}
+							/>
+						))
           )}
         </Section>
       </Wrapper>
